@@ -45,7 +45,7 @@ if user_api := st.text_input("Your API key: ", type="password"):
             {"role": "user", "content": user_input}
         ]
     )
-
+        print(user_input)
         response = completion.choices[0].message.content
         response = response.replace("```", "").strip()
         response = response.replace("python", "").strip()
