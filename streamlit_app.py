@@ -22,7 +22,7 @@ if user_api := st.text_input("Your API key: ", type="password"):
                 - Make sure to include three languages.
                 - Make sure to includes pinyin for Chinese in brackets immediately after the Chinese scripts.
                 2. Create the first table for each word class, in column 2 with a extracted word and, in columns 3 and 4 with the word 
-                translations of the other languages. The columns 5 and 6 give a sentence examples in each language for every extracted word. 
+                translations of the other languages. The columns 5 and 6 give a sentence examples in each language "for every extracted word" one row each. 
                 After that, in the last two rows, make "only five sentences" for each language using all the extracted, one row for each language's five sentences.
                 
                 Note!! Make sure to follow this format, every row must be "of the same length":
