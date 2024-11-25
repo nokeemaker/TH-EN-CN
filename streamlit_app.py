@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import openai
 import re
+import ast
 
 st.title("📚 YOUR THAI-ENGLISH-CHINESE VOCAB LEARNING TOOL")
 st.write(
@@ -18,12 +19,12 @@ if user_api := st.text_input("Your API key: ", type="password"):
         prompt = """The input needs to be in Thai, English or Chinese.
                 Your goal is to help learners of these three languages develop understandings of the three at the same time, so be comprehensive in extracting words.
                 Create only a dictionary designed to be displayed by a Pandas dataframe(table) after performing the following actions: 
+                1. Extract essential nouns, verbs, and adjectives "literally" from the text, limiting at the total of 50, based on the detected language, since the text is not always in Thai.
                 - Make sure to include three languages.
                 - Make sure to includes pinyin for Chinese in brackets immediately after the Chinese scripts.
-                1. Extract essential nouns, verbs, and adjectives "literally" from the text, limiting at the total of 50, based on the detected language, since the text is not always in Thai.
                 2. Create the first table for each word class, in column 2 with a extracted word and, in columns 3 and 4 with the word 
                 translations of the other languages. The columns 5 and 6 give a sentence examples in each language. 
-                After that, in the last two rows, make five sentences in each language using all the extracted, one row for each language's five sentences.
+                After that, in the last two rows, make "only five sentences" for each language using all the extracted, one row for each language's five sentences.
                 
                 Note!! Make sure to follow this format, every row must be "of the same length":
                   data = {
@@ -47,18 +48,36 @@ if user_api := st.text_input("Your API key: ", type="password"):
             {"role": "user", "content": f"{user_input}"}
         ]
     )
-        print(user_input)
         response = completion.choices[0].message.content
         response = response.replace("```", "").strip()
         response = response.replace("python", "").strip()
         response = re.sub(r"\n(\s+)sentences", "\nsentences", response)
         print(response)
-        exec(response)
-        df_words = pd.DataFrame(data)
-        df_sentences = pd.DataFrame(sentences)
+        
+        # Error Handling
+        try:
+            # Assuming the response contains a valid Python dictionary or list
+            parsed_response = ast.literal_eval(response)   #  raises an exception if the input isn't a valid Python datatype
 
-        st.write(df_words)
-        st.write(df_sentences)
+            # Validate the expected data structure
+            if isinstance(parsed_response, dict) and 'data' in parsed_response and 'sentences' in parsed_response:
+                data = parsed_response['data']
+                sentences = parsed_response['sentences']
+
+                # Create DataFrames
+                df_words = pd.DataFrame(data)
+                df_sentences = pd.DataFrame(sentences)
+
+                # Display DataFrames in Streamlit
+                st.write(df_words)
+                st.write(df_sentences)
+            else:
+                st.error("Response does not contain the expected structure (dictionary with 'data' and 'sentences').")
+
+        except (ValueError, SyntaxError) as e:
+            # Handle invalid or unsafe code
+            st.error(f"Failed to process the response: {e}")
+            st.write("Raw Response:", response)
 
         del df_words, df_sentences
     
