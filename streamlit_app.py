@@ -71,6 +71,8 @@ if user_api := st.text_input("Your API key: ", type="password"):
                 # Display DataFrames in Streamlit
                 st.write(df_words)
                 st.write(df_sentences)
+                
+                del df_words, df_sentences
             else:
                 st.error("Response does not contain the expected structure (dictionary with 'data' and 'sentences').")
 
@@ -79,5 +81,4 @@ if user_api := st.text_input("Your API key: ", type="password"):
             st.error(f"Failed to process the response: {e}")
             st.write("Raw Response:", response)
 
-        del df_words, df_sentences
     
