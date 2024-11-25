@@ -19,7 +19,7 @@ if user_api := st.text_input("Your API key: ", type="password"):
                 Create only a dictionary designed to be displayed by a Pandas dataframe(table) after performing the following actions: 
                 - Make sure to include three languages.
                 - Make sure to includes pinyin for Chinese in brackets immediately after the Chinese scripts.
-                1. Extract nouns, verbs, and adjectives "literally" from the text, limiting at the total of 50, based on the detected language.
+                1. Extract nouns, verbs, and adjectives "literally" from the text, limiting at the total of 50, based on the detected language, since the text is not always in Thai.
                 2. Create the first table for each word class, in column 2 with a extracted word and, in columns 3 and 4 with the word 
                 translations of the other languages. The columns 5 and 6 give a sentence examples in each language. 
                 After that, in the last two rows, make five sentences in each language using all the extracted, one row for each language's five sentences.
