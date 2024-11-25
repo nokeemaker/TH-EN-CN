@@ -35,6 +35,7 @@ if user_api := st.text_input("Your API key: ", type="password"):
                     "Thai Sentences": [],
                     "English Sentences": [],
                     "Chinese Sentences": []}
+                Last note: return only the requested variables, not information that would disrupt the code.
     """
 
         completion = client.chat.completions.create(
