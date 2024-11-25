@@ -25,7 +25,7 @@ if user_api := st.text_input("Your API key: ", type="password"):
                 translations of the other languages. The columns 5 and 6 give a sentence examples in each language. 
                 After that, in the last two rows, make five sentences in each language using all the extracted, one row for each language's five sentences.
                 
-                Note!! Make sure to follow this format, every row must be of the same length:
+                Note!! Make sure to follow this format, every row must be "of the same length":
                   data = {
                     "Word Class": ["Noun", ..., "Verb", ..., "Adjective", ...],
                     "Extracted Word": [],
