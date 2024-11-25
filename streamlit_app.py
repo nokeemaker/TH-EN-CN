@@ -50,10 +50,15 @@ if user_api := st.text_input("Your API key: ", type="password"):
         response = response.replace("```", "").strip()
         response = response.replace("python", "").strip()
         response = re.sub(r"\n(\s+)sentences", "\nsentences", response)
-
-        exec(response)
-        df_words = pd.DataFrame(data)
-        df_sentences = pd.DataFrame(sentences)
+        
+        if df_words and df_sentences:
+            del df_words
+            del df_sentences
+        else:
+            exec(response)
+            df_words = pd.DataFrame(data)
+            df_sentences = pd.DataFrame(sentences)
 
         st.write(df_words)
         st.write(df_sentences)
+    
