@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import openai
 import re
-import ast
 
 st.title("📚 YOUR THAI-ENGLISH-CHINESE VOCAB LEARNING TOOL")
 st.write(
@@ -56,15 +55,7 @@ if user_api := st.text_input("Your API key: ", type="password"):
         
         # Error Handling
         try:
-            # Assuming the response contains a valid Python dictionary or list
-            parsed_response = ast.literal_eval(response)   #  raises an exception if the input isn't a valid Python datatype
-
-            # Validate the expected data structure
-            if isinstance(parsed_response, dict) and 'data' in parsed_response and 'sentences' in parsed_response:
-                data = parsed_response['data']
-                sentences = parsed_response['sentences']
-
-                # Create DataFrames
+            # Create DataFrames
                 df_words = pd.DataFrame(data)
                 df_sentences = pd.DataFrame(sentences)
 
@@ -73,9 +64,6 @@ if user_api := st.text_input("Your API key: ", type="password"):
                 st.write(df_sentences)
                 
                 del df_words, df_sentences
-            else:
-                st.error("Response does not contain the expected structure (dictionary with 'data' and 'sentences').")
-
         except (ValueError, SyntaxError) as e:
             # Handle invalid or unsafe code
             st.error(f"Failed to process the response: {e}")
