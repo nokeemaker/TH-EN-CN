@@ -21,7 +21,7 @@ if user_api := st.text_input("Your API key: ", type="password"):
                 - Make sure to includes pinyin for Chinese in brackets immediately after the Chinese scripts.
                 1. Extract nouns, verbs, and adjectives from the text, limiting at the total of 50.
                 2. Create the first table for each word class, in column 2 with a extracted word and, in columns 3 and 4 with the word 
-                translations of the other languages. The columns 5 and 6 give a sentence examples in each language.
+                translations of the other languages(if the text is in English, give Thai and Chinese meanings and examples, for example.). The columns 5 and 6 give a sentence examples in each language. 
                 After that, in the last two rows, make five sentences in each language using all the extracted, one row for each language's five sentences.
                 Note!! Make sure to follow this format, every row must be of the same length:
                   data = {
