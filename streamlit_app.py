@@ -56,6 +56,7 @@ if user_api := st.text_input("Your API key: ", type="password"):
         # Error Handling
         try:
             # Create DataFrames
+                exec(response)
                 df_words = pd.DataFrame(data)
                 df_sentences = pd.DataFrame(sentences)
 
