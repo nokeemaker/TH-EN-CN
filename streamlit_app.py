@@ -55,7 +55,7 @@ if user_api := st.text_input("Your API key: ", type="password"):
         try:
             # Create DataFrames
             exec(response)
-            df_words = pd.DataFrame(data=data, index=range(1, len(data[list(data.keys())[0]])+1))
+            df_words = pd.DataFrame(data, index=range(1, len(data[list(data.keys())[0]])+1))
             df_sentences = pd.DataFrame(sentences, index=range(1, len(sentences[list(sentences.keys())[0]])+1))
 
             # Display DataFrames in Streamlit
