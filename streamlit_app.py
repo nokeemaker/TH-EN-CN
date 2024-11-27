@@ -37,7 +37,8 @@ if user_api := st.text_input("Your API key: ", type="password"):
                     "English Sentences": [],
                     "Chinese Sentences": []}
                Important Notes: 
-                - Ensure ‘every row’ in the table has ‘consistent length’ 
+                - 1 must be the starting index for every table.
+                - Ensure ‘every row’ in each table has ‘consistent length’ 
                 (i.e., same number of columns for each row). 
                 - Return only the requested variables. Do not include any extra information that could disrupt the code."""
 
