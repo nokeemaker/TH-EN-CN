@@ -27,11 +27,11 @@ if user_api := st.text_input("Your API key: ", type="password"):
                 After that, in the last two rows, make "only five sentences" for each language using all the extracted, one row for each language's five sentences.
                 data = {
                     "Word Class": ["Noun", ..., "Verb", ..., "Adjective", ...],
-                    "Extracted Word": [],
-                    "English Translations": [],
-                    "Chinese Translations": [],
-                    "English Examples": [],
-                    "Chinese Examples": []}
+                    "Extracted Words": [],
+                    "{language x} Translations": [],
+                    "{language y} Translations": [],
+                    "{language x} Examples": [],   ** this array in this must have the same languages as the ones above it.
+                    "{language y} Examples": []}   ** this array in this must have the same languages as the ones above it.
                 sentences = {
                     "Thai Sentences": [],
                     "English Sentences": [],
