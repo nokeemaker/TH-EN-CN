@@ -67,5 +67,3 @@ if user_api := st.text_input("Your API key: ", type="password"):
             # Handle invalid or unsafe code
             st.error(f"Failed to process the response: {e}")
             st.write("Raw Response:", response)
-
-len(dict[dict[0]])
