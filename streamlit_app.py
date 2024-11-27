@@ -42,7 +42,7 @@ if user_api := st.text_input("Your API key: ", type="password"):
         model="gpt-4o-mini",
         messages=[
             {"role": "system", "content": prompt},
-            {"role": "assistant", "content": notes}
+            {"role": "assistant", "content": notes},
             {"role": "user", "content": f"{user_input}"}
         ]
     )
