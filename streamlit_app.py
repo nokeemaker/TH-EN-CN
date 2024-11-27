@@ -22,7 +22,7 @@ if user_api := st.text_input("Your API key: ", type="password"):
                 2. Create the first table for each word class, in column 2 with a extracted word and, in columns 3 and 4 with the word translations of the other languages 
                 (for example, if the text is in Thai, give meanings and examples in English and Chinese; in Thai and Chinese for English; and in Thai and English for Chinese.). 
                 The columns 5 and 6 give **a single example sentence** in the other two languages for **each of the extracted words**. 
-                3. in another table, using all the extracted words together in five sentences in Thai, English, Chinese.
+                3. in another table, using all the extracted words together in **five** sentences in Thai, English, Chinese.
                 data = {
                     "Word Class": ["Noun", ..., "Verb", ..., "Adjective", ...],
                     "Extracted Words": [],
