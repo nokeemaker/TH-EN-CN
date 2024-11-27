@@ -34,9 +34,8 @@ if user_api := st.text_input("Your API key: ", type="password"):
                     "Thai Sentences": [],
                     "English Sentences": [],
                     "Chinese Sentences": []}"""
-        notes = """1. Number 1 must be the starting index for every dataframe.
-                   2. Return only the requested variables. Do not include any extra information that could disrupt the code.
-                   3. Include pinyin for Chinese in brackets immediately after the Chinese scripts."""
+        notes = """1. Return only the requested variables. Do not include any extra information that could disrupt the code.
+                   2. Include pinyin for Chinese in brackets immediately after the Chinese scripts."""
 
         completion = client.chat.completions.create(
         model="gpt-4o-mini",
@@ -56,6 +55,8 @@ if user_api := st.text_input("Your API key: ", type="password"):
         try:
             # Create DataFrames
                 exec(response)
+                print(data)
+                print(sentences)
                 df_words = pd.DataFrame(data)
                 df_sentences = pd.DataFrame(sentences)
 
@@ -69,4 +70,7 @@ if user_api := st.text_input("Your API key: ", type="password"):
             st.error(f"Failed to process the response: {e}")
             st.write("Raw Response:", response)
 
+# def get_num_value(dict):
+#     key_list = list(dict.keys())
+    
     
