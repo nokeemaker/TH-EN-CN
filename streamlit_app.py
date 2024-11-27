@@ -34,7 +34,7 @@ if user_api := st.text_input("Your API key: ", type="password"):
                     "Thai Sentences": [],
                     "English Sentences": [],
                     "Chinese Sentences": []}"""
-        notes = """1. Number 1 must be the starting index for every table.
+        notes = """1. Number 1 must be the starting index for every dataframe.
                    2. Return only the requested variables. Do not include any extra information that could disrupt the code.
                    3. Include pinyin for Chinese in brackets immediately after the Chinese scripts."""
 
