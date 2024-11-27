@@ -55,8 +55,8 @@ if user_api := st.text_input("Your API key: ", type="password"):
         try:
             # Create DataFrames
             exec(response)
-            df_words = pd.DataFrame(data)
-            df_sentences = pd.DataFrame(sentences)
+            df_words = pd.DataFrame(data=data, index=range(1, len(data[data[0]])+1))
+            df_sentences = pd.DataFrame(sentences, index=range(1, len(sentences[sentences[0]])+1))
 
             # Display DataFrames in Streamlit
             st.write(df_words)
@@ -67,3 +67,5 @@ if user_api := st.text_input("Your API key: ", type="password"):
             # Handle invalid or unsafe code
             st.error(f"Failed to process the response: {e}")
             st.write("Raw Response:", response)
+
+len(dict[dict[0]])
