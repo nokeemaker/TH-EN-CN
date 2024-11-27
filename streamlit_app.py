@@ -38,18 +38,17 @@ if user_api := st.text_input("Your API key: ", type="password"):
                    2. Include pinyin for Chinese in brackets immediately after the Chinese scripts."""
 
         completion = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "system", "content": prompt},
-            {"role": "assistant", "content": notes},
-            {"role": "user", "content": f"{user_input}"}
-        ]
-    )
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": prompt},
+                {"role": "assistant", "content": notes},
+                {"role": "user", "content": f"{user_input}"}
+            ]
+        )     
         response = completion.choices[0].message.content
         response = response.replace("```", "").strip()
         response = response.replace("python", "").strip()
         response = re.sub(r"\n(\s+)sentences", "\nsentences", response)
-        print(response)
         
         # Error Handling
         try:
@@ -63,6 +62,7 @@ if user_api := st.text_input("Your API key: ", type="password"):
             st.write(df_sentences)
             
             del df_words, df_sentences
+            
         except (ValueError, SyntaxError) as e:
             # Handle invalid or unsafe code
             st.error(f"Failed to process the response: {e}")
