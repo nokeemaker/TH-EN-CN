@@ -19,8 +19,6 @@ if user_api := st.text_input("Your API key: ", type="password"):
                 Your goal is to help learners of these three languages develop understandings of the three at the same time, so be comprehensive in extracting words.
                 Create only a dictionary designed to be displayed by a Pandas dataframe(table) after performing the following actions: 
                 1. Extract essential nouns, verbs, and adjectives "literally" from the input text, limiting at the total of 50, based on the detected language, since the text is not always in Thai.
-                - Make sure to include three languages.
-                - Make sure to include pinyin for Chinese in brackets immediately after the Chinese scripts.
                 2. Create the first table for each word class, in column 2 with a extracted word and, in columns 3 and 4 with the word translations of the other languages 
                 (for example, if the text is in Thai, give meanings and examples in English and Chinese; in Thai and Chinese for English; and in Thai and English for Chinese.). 
                 The columns 5 and 6 give **a single example sentence** in the other two languages for **each of the extracted words**. 
@@ -35,16 +33,16 @@ if user_api := st.text_input("Your API key: ", type="password"):
                 sentences = {
                     "Thai Sentences": [],
                     "English Sentences": [],
-                    "Chinese Sentences": []}
-               Important Notes: 
-                - number 1 must be the starting index for every table.
-                (i.e., same number of columns for each row). 
-                - Return only the requested variables. Do not include any extra information that could disrupt the code."""
+                    "Chinese Sentences": []}"""
+        notes = """1. Number 1 must be the starting index for every table.
+                   2. Return only the requested variables. Do not include any extra information that could disrupt the code.
+                   3. Include pinyin for Chinese in brackets immediately after the Chinese scripts."""
 
         completion = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
             {"role": "system", "content": prompt},
+            {"role": "assistant", "content": notes}
             {"role": "user", "content": f"{user_input}"}
         ]
     )
