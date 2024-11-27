@@ -54,17 +54,15 @@ if user_api := st.text_input("Your API key: ", type="password"):
         # Error Handling
         try:
             # Create DataFrames
-                exec(response)
-                print(data)
-                print(sentences)
-                df_words = pd.DataFrame(data)
-                df_sentences = pd.DataFrame(sentences)
+            exec(response)
+            df_words = pd.DataFrame(data)
+            df_sentences = pd.DataFrame(sentences)
 
-                # Display DataFrames in Streamlit
-                st.write(df_words)
-                st.write(df_sentences)
-                
-                del df_words, df_sentences
+            # Display DataFrames in Streamlit
+            st.write(df_words)
+            st.write(df_sentences)
+            
+            del df_words, df_sentences
         except (ValueError, SyntaxError) as e:
             # Handle invalid or unsafe code
             st.error(f"Failed to process the response: {e}")
