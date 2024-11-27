@@ -24,21 +24,20 @@ if user_api := st.text_input("Your API key: ", type="password"):
                 2. Create the first table for each word class, in column 2 with a extracted word and, in columns 3 and 4 with the word translations of the other languages 
                 (for example, if the text is in Thai, give meanings and examples in English and Chinese; in Thai and Chinese for English; and in Thai and English for Chinese.). 
                 The columns 5 and 6 give **a single example sentence** in the other two languages for **each of the extracted words**. 
-                3. in another table, using all the extracted words together in five sentences for each of the three languages.
+                3. in another table, using all the extracted words together in five sentences in Thai, English, Chinese.
                 data = {
                     "Word Class": ["Noun", ..., "Verb", ..., "Adjective", ...],
                     "Extracted Words": [],
                     "{language x} Translations": [],
                     "{language y} Translations": [],
-                    "{language x} Examples": [],   ** this array in this must have the same languages as the ones above it.
-                    "{language y} Examples": []}   ** this array in this must have the same languages as the ones above it.
+                    "{language x} Examples": [],   ** this array in this must have the same length as the ones above it.
+                    "{language y} Examples": []}   ** this array in this must have the same length as the ones above it.
                 sentences = {
                     "Thai Sentences": [],
                     "English Sentences": [],
                     "Chinese Sentences": []}
                Important Notes: 
                 - number 1 must be the starting index for every table.
-                - Ensure ‘every row’ in each table has ‘consistent length’ 
                 (i.e., same number of columns for each row). 
                 - Return only the requested variables. Do not include any extra information that could disrupt the code."""
 
